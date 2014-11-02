@@ -95,6 +95,8 @@ public class MainMenu {
     //--------------------------------------------------------------------    
 
     protected void addRow(String one, String two,String three,String four){
+        g.setColor(Color.BLACK);
+        
         latestRow += 10;
         if (latestRow >= height ) {
             drawAll("Nazwa","Pomieszczenie","Dlugosc(s)","Temperatura");
