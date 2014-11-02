@@ -19,6 +19,7 @@ public class DevicesDatabase implements EventInterface{
     public List<Device> Devices;
     boolean allInitialized;
     
+    Image menu;
     //-------------------------------------------------------------------- 
     //napisana
     protected boolean checkInitialization(){
