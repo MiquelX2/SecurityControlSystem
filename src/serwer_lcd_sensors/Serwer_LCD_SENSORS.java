@@ -21,7 +21,7 @@ public class Serwer_LCD_SENSORS {
             wyswietlacz.showDesktopScreenCopy(true);
             wyswietlacz.funkcje();
             
-            DevicesDatabase kk = new DevicesDatabase(Image.Tryb.spi,true);
+            DevicesDatabase kk = new DevicesDatabase();
             kk.wyswietlacz = wyswietlacz;
             
             Device x = new Device(Device.DeviceType.MOTION,"Motion1R",RaspiPin.GPIO_00,"prawa");
