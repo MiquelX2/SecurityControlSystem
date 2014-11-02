@@ -13,15 +13,15 @@ public class AlarmSystem {
     private final String localization;
     private final String ownerName;
     private final String ownerSurname;
-    DevicesDatabase devicesDatabase;
-    Image desktop;
+    private final DevicesDatabase devicesDatabase;
+    private final Image desktop;
     //--------------------------------------------------------------------    
     public AlarmSystem(){
         ownerName = null;
         ownerSurname = null;
         localization = null;
 
-        devicesDatabase = new DevicesDatabase(Image.Tryb.spi,true);
+        devicesDatabase = new DevicesDatabase();
         desktop = new Image();
 
     }
@@ -31,7 +31,7 @@ public class AlarmSystem {
         ownerSurname = _ownerSurname;
         localization = _localization;
 
-        devicesDatabase = new DevicesDatabase(Image.Tryb.spi,true);
+        devicesDatabase = new DevicesDatabase();
         desktop = new Image();
     }
     //--------------------------------------------------------------------    
