@@ -156,7 +156,7 @@ public class Device extends Thread {
                 public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                     // display pin state on console
                     System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
-                    listener.eventOccured("plum","klum");
+                    listener.eventOccured(event.getPin().toString(),name,localization,event.getState().toString());
 
                 }
 
