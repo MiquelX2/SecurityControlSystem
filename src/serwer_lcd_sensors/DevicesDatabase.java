@@ -36,7 +36,7 @@ public class DevicesDatabase implements EventInterface{
         return state;
     }
     //--------------------------------------------------------------------    
-    public DevicesDatabase(Image.Tryb x,boolean desktopScreenCopy){
+    public DevicesDatabase(){
         Devices = new ArrayList<Device>();
         //wyswietlacz = new Image(x);
         //wyswietlacz.showDesktopScreenCopy(desktopScreenCopy);
