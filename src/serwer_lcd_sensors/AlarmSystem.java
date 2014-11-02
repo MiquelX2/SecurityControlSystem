@@ -9,7 +9,11 @@ package serwer_lcd_sensors;
  *
  * @author miquel
  */
+
+//Najwyzsza klasa, baza calego systemu ktora bedzie zarzadzala wszystkimi modulami
+//uruchamiana i Tworzona bezposrednio w main klasy "Serwer_LCD_SENSORS", dla zachowania czytelnosci kodu
 public class AlarmSystem {
+    //Zmienne opisujace system i zawierajace jego moduly
     private final String localization;
     private final String ownerName;
     private final String ownerSurname;
@@ -17,6 +21,7 @@ public class AlarmSystem {
     private final Image desktop;
     //--------------------------------------------------------------------    
     public AlarmSystem(){
+        //konstruktor domyslny inicjujacy pusta klase gotowa do inicjalizacji
         ownerName = null;
         ownerSurname = null;
         localization = null;
@@ -27,6 +32,7 @@ public class AlarmSystem {
     }
     //-------------------------------------------------------------------- 
     public AlarmSystem(String _ownerName,String _ownerSurname,String _localization){
+        //konstruktor inicjalizujacy w pelni system, wypelnia wszystkie pola 
         ownerName = _ownerName;
         ownerSurname = _ownerSurname;
         localization = _localization;
@@ -36,24 +42,32 @@ public class AlarmSystem {
     }
     //--------------------------------------------------------------------    
     protected boolean runAlarmSystem(){
+        //uruchomienie wszystkich modulow systemu ( urzadzenia, wyswietlanie, aktualizacje SQL, etc.) 
         addAllDevices();
         runAllDevices();
         runSqlUpdate();
-        
+        //dopisac kontrole poprawnosci uruchomienia systemow
         return true;
     }    
     //--------------------------------------------------------------------
     protected boolean runSqlUpdate(){
+        //uruchamia automatyczne aktualizacje bazy danych SQL
         devicesDatabase.runSqlUpdateThread();
+        //dopisac kontrole poprawnosci
         return true;
     }
     //--------------------------------------------------------------------
     protected boolean stopSqlUpdate(){
+        //Zatrzymuje automatyczne aktualizacje bazy SQL
         devicesDatabase.stopSqlUpdateThread();
+                //dopisac kontrole poprawnosci
         return false;
     }
     //--------------------------------------------------------------------
+    //popracuj nad ta funkcja
     protected boolean addAllDevices(){
+        //lista  inicjalizacyjna bedzie edytowalna z bazy danych SQL
+        
         //Dodanie wszystkich urządzeń i zwrocenie stanu dodawania
         //Dopisac rzucanie wyjatku gdy ktores urzadzenie zawiedzie
         addDevice(Device.DeviceType.MOTION, "Ruch 1", 0, "prawa");
@@ -68,34 +82,54 @@ public class AlarmSystem {
         addDevice(Device.DeviceType.TEMPERATURE, "Temp2", 7, "prototyp");
         addDevice(Device.DeviceType.TEMPERATURE, "Temp3", 7, "prototyp");
         
+        
+        //dopisac kontrole poprawnosci
+
         return true;
     }
     //--------------------------------------------------------------------
     protected void addDevice(Device.DeviceType type,String name,int portGpio,String localization){
+        //dodanie urzadzenia do bazy urzadzen
         devicesDatabase.addDevice(new Device(type,name,portGpio,localization));
+        //dodaj kontrole poprawnosci dodania
     }
     //--------------------------------------------------------------------    
     protected void removeDevice(Device.DeviceType type,String name,int portGpio,String localization){
+        //usuniecie urzadzenia z bazy
         devicesDatabase.removeDevice(type,name,portGpio,localization);
+        //dodaj kontrole poprawnosci usuniecia urzadzenia
     }
     //--------------------------------------------------------------------    
     protected boolean runAllDevices(){
+        //uruchamia wszystkie urzadzenia
         devicesDatabase.runAllDevices();
+                //dopisac kontrole poprawnosci
+
         return true;
     }
     //-------------------------------------------------------------------- 
     protected boolean stopDevice(Device.DeviceType type,String name,int portGpio,String localization){
+        //uruchamia wybrane urzadzenie
         devicesDatabase.stopDevice(type,name,portGpio,localization);
+                //dopisac kontrole poprawnosci
         return true;
     }
     //-------------------------------------------------------------------- 
     protected boolean stopAllDevices(){
+        //zatrzymuje wszystkie urzadzenia
         devicesDatabase.stopAllDevices();
+                //dopisac kontrole poprawnosci
+
         return true;
     }
     //-------------------------------------------------------------------- 
     protected boolean updateScreen(){
         //Aktualizuj ekran niezaleznie od systemu
+        
+        //przemyslec dzialanie i sensownosc tej funkcji
+        
+        //dopisac kontrole poprawnosci
+
         return true;
     }
     //-------------------------------------------------------------------- 
