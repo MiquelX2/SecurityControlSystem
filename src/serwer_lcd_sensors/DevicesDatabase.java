@@ -112,7 +112,7 @@ public class DevicesDatabase implements EventInterface{
     @Override
     public void eventOccured(String portGPIO, String value) {
             System.out.println("Sygnal na porcie:"+portGPIO);
-            wyswietlacz.addRow(portGPIO, "sensor", "room", value);
+           // wyswietlacz.addRow(portGPIO, "sensor", "room", value);
         
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
