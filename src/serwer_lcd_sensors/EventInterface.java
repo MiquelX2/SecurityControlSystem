@@ -10,5 +10,5 @@ package serwer_lcd_sensors;
  * @author miquel
  */
 public interface EventInterface {
-    public void eventOccured(String portGPIO,String value);
+    public void eventOccured(String portGPIO,String name,String place,String value);
 }
