@@ -91,7 +91,8 @@ public class Image extends Thread {
     protected void funkcje(){
         //blink();
         //test();
-        ekranik();
+        //ekranik();
+        workingMenu();
         System.out.println("Koniec wyswietlania ;)");
 
         
@@ -287,7 +288,7 @@ public class Image extends Thread {
     protected int getWidth(){ return width; }    
     //--------------------------------------------------------------------    
     protected void addRow(String number,String name,String place,String state){
-        //menu.addRow(number, name, place, state);
+        menu.addRow(number, name, place, state);
 
     }
 }
