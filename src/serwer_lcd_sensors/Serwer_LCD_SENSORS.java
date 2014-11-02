@@ -19,6 +19,7 @@ public class Serwer_LCD_SENSORS {
 	public static void main(String[] args) {
             Image wyswietlacz = new Image(Image.Tryb.spi);
             wyswietlacz.showDesktopScreenCopy(true);
+            wyswietlacz.funkcje();
             
             DevicesDatabase kk = new DevicesDatabase(Image.Tryb.spi,true);
             
