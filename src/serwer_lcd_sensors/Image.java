@@ -36,7 +36,6 @@ public class Image extends Thread {
     private final int height;
     public final FrameBuffer fb;
     
-    MainMenu menu;
     //--------------------------------------------------------------------
     protected enum Tryb { monitor, spi }
     //-------------------------------------------------------------------- 
@@ -224,33 +223,34 @@ public class Image extends Thread {
                     Graphics2D g = img.createGraphics();
                     g.clearRect(0, 0, 160, 128);
                     try{
-                    menu = new MainMenu(g);
+                    
+                        MainMenu menu = new MainMenu(g);
                    
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                    menu.addRow("True", "False", "False", "TRUE");
-                    Thread.sleep(700);
-                            
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+                        menu.addRow("True", "False", "False", "TRUE");
+                        Thread.sleep(700);
+
                     }
                     catch(InterruptedException e){ }
                             
