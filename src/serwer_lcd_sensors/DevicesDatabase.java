@@ -19,7 +19,6 @@ public class DevicesDatabase implements EventInterface{
     public List<Device> Devices;
     boolean allInitialized;
     
-    Image wyswietlacz;
     //-------------------------------------------------------------------- 
     //napisana
     protected boolean checkInitialization(){
