@@ -91,7 +91,7 @@ public class Image extends Thread {
         //blink();
         //test();
         ekranik();
-        //System.out.println("Koniec wyswietlania ;)");
+        System.out.println("Koniec wyswietlania ;)");
 
         
     }      
