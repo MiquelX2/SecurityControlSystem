@@ -261,7 +261,7 @@ public class Image extends Thread {
     }
     protected void workingMenu(){
       
-        new Thread("Blink_show") {
+        new Thread("Menu drawer") {
                 @Override
                 public void run() {
                     BufferedImage img = fb.getScreen();
@@ -289,6 +289,5 @@ public class Image extends Thread {
     //--------------------------------------------------------------------    
     protected void addRow(String number,String name,String place,String state){
         menu.addRow(number, name, place, state);
-
     }
 }
