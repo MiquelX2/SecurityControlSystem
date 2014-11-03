@@ -37,8 +37,11 @@ public class AlarmSystem implements EventInterface {
         ownerSurname = _ownerSurname;
         localization = _localization;
 
-        devicesDatabase = new DevicesDatabase();
-        desktop = new Image();
+        devicesDatabase = new DevicesDatabase();            
+        //Dopisanie inicjalizacji ekranu z interfejsu SPI i uruchomienie kopiowania ekranu na terminal SSH
+        desktop = new Image(Image.Tryb.spi);
+        desktop.showDesktopScreenCopy(true);
+        desktop.funkcje();
     }
     //--------------------------------------------------------------------    
     protected boolean runAlarmSystem(){
@@ -134,7 +137,6 @@ public class AlarmSystem implements EventInterface {
         return true;
     }
     //-------------------------------------------------------------------- 
-
     @Override
     public void eventOccured(String portGPIO, String name, String place, String value) {
         //Metoda aktualizuje ekran zgodnie z otrzymanymi danymi ( dodaje wiersz do ekranu ) 
@@ -142,6 +144,8 @@ public class AlarmSystem implements EventInterface {
         //Dodac kontrole poprawnosci aktualizacji ekranu
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    //-------------------------------------------------------------------- 
+    //-------------------------------------------------------------------- 
 
 
 }
