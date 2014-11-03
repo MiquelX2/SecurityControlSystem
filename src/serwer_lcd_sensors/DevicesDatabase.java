@@ -78,11 +78,13 @@ public class DevicesDatabase implements EventInterface{
         
     }
     //--------------------------------------------------------------------    
-    protected boolean runAllDevices(){
+    protected boolean runAllDevices(EventInterface listener){
         for(Device x : Devices)
         {
             try{
-                x.addListener(this);
+                //removed DeviceDatabase listener
+                //x.addListener(this);
+                x.addListener(listener);
                 x.runThread();
             }
             catch(InterruptedException f){}
