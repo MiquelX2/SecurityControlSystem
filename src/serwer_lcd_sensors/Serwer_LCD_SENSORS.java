@@ -17,6 +17,7 @@ public class Serwer_LCD_SENSORS {
     //--------------------------------------------------------------------    
 
 	public static void main(String[] args) {
+            /*
             Image wyswietlacz = new Image(Image.Tryb.spi);
             wyswietlacz.showDesktopScreenCopy(true);
             wyswietlacz.funkcje();
@@ -29,8 +30,8 @@ public class Serwer_LCD_SENSORS {
             Device z = new Device(Device.DeviceType.MOTION,"Motion3L",RaspiPin.GPIO_03,"lewa");
             
             
-            Device a = new Device(Device.DeviceType.NOISE,"Noise",RaspiPin.GPIO_09,"prawaD");
-            Device b = new Device(Device.DeviceType.LIGHT,"Light",RaspiPin.GPIO_08,"lewaD");
+            Device a = new Device(Device.DeviceType.NOISE,"Light",RaspiPin.GPIO_09,"prawaD");
+            Device b = new Device(Device.DeviceType.LIGHT,"Noise",RaspiPin.GPIO_08,"lewaD");
             
             kk.addDevice(b);
             kk.addDevice(x);
@@ -40,6 +41,9 @@ public class Serwer_LCD_SENSORS {
             
             
             kk.runAllDevices();
+           */
+            AlarmSystem system = new AlarmSystem("Michal", "Deska", "Stanislawow");
+            system.runAlarmSystem();
 	}
     //--------------------------------------------------------------------    
 
