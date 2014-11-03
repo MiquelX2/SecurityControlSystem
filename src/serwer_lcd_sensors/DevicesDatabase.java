@@ -19,7 +19,7 @@ public class DevicesDatabase implements EventInterface{
     public List<Device> Devices;
     boolean allInitialized;
     
-    Image wyswietlacz;
+    //Image wyswietlacz;
     //-------------------------------------------------------------------- 
     //napisana
     protected boolean checkInitialization(){
@@ -114,11 +114,9 @@ public class DevicesDatabase implements EventInterface{
     //-------------------------------------------------------------------
     @Override
     public void eventOccured(String portGPIO,String name,String place,String value) {
-            if(value.equals("HIGH")){
-                
-            System.out.println(portGPIO + " : " + name + " : " + place + " : " + value);
-            wyswietlacz.addRow(portGPIO, name, place, value);
-        
+            if(value.equals("HIGH")){   
+                //System.out.println(portGPIO + " : " + name + " : " + place + " : " + value);
+                //wyswietlacz.addRow(portGPIO, name, place, value);
             }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
