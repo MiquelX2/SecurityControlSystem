@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package serwer_lcd_sensors;
+import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.Pin;
 
 /**
  *
@@ -42,13 +44,15 @@ public class AlarmSystem implements EventInterface {
         desktop = new Image(Image.Tryb.spi);
         desktop.showDesktopScreenCopy(true);
         desktop.funkcje();
+        
+        //devicesDatabase.wyswietlacz = desktop;
     }
     //--------------------------------------------------------------------    
     protected boolean runAlarmSystem(){
         //uruchomienie wszystkich modulow systemu ( urzadzenia, wyswietlanie, aktualizacje SQL, etc.) 
         addAllDevices();
         runAllDevices();
-        runSqlUpdate();
+        //runSqlUpdate();
         //dopisac kontrole poprawnosci uruchomienia systemow
         return true;
     }    
@@ -73,25 +77,25 @@ public class AlarmSystem implements EventInterface {
         
         //Dodanie wszystkich urządzeń i zwrocenie stanu dodawania
         //Dopisac rzucanie wyjatku gdy ktores urzadzenie zawiedzie
-        addDevice(Device.DeviceType.MOTION, "Ruch 1", 0, "prawa");
-        addDevice(Device.DeviceType.MOTION, "Ruch 2", 2, "srodkowa");
-        addDevice(Device.DeviceType.MOTION, "Ruch 3", 3, "lewa");
+       
+        addDevice(Device.DeviceType.MOTION, "Ruch 1", RaspiPin.GPIO_00, "prawa");
+        addDevice(Device.DeviceType.MOTION, "Ruch 2", RaspiPin.GPIO_02, "srodkowa");
+        addDevice(Device.DeviceType.MOTION, "Ruch 3", RaspiPin.GPIO_03, "lewa");
         
         
-        addDevice(Device.DeviceType.NOISE, "Halasu", 8, "lewa_blisk");
-        addDevice(Device.DeviceType.LIGHT, "Swiatla", 9, "prawa_blisk");
+        addDevice(Device.DeviceType.NOISE, "Halasu", RaspiPin.GPIO_08, "lewaB");
+        addDevice(Device.DeviceType.LIGHT, "Swiatla",RaspiPin.GPIO_09, "prawaB");
         
-        addDevice(Device.DeviceType.TEMPERATURE, "Temp1", 7, "prototyp");
-        addDevice(Device.DeviceType.TEMPERATURE, "Temp2", 7, "prototyp");
-        addDevice(Device.DeviceType.TEMPERATURE, "Temp3", 7, "prototyp");
-        
-        
+        //addDevice(Device.DeviceType.TEMPERATURE, "Temp1", RaspiPin.GPIO_07, "prototyp");
+        //addDevice(Device.DeviceType.TEMPERATURE, "Temp2", RaspiPin.GPIO_07, "prototyp");
+        //addDevice(Device.DeviceType.TEMPERATURE, "Temp3", RaspiPin.GPIO_07, "prototyp");      
+
         //dopisac kontrole poprawnosci
 
         return true;
     }
     //--------------------------------------------------------------------
-    protected void addDevice(Device.DeviceType type,String name,int portGpio,String localization){
+    protected void addDevice(Device.DeviceType type,String name,Pin portGpio,String localization){
         //dodanie urzadzenia do bazy urzadzen
         devicesDatabase.addDevice(new Device(type,name,portGpio,localization));
         //dodaj kontrole poprawnosci dodania
@@ -105,8 +109,9 @@ public class AlarmSystem implements EventInterface {
     //--------------------------------------------------------------------    
     protected boolean runAllDevices(){
         //uruchamia wszystkie urzadzenia
-        devicesDatabase.runAllDevices();
-                //dopisac kontrole poprawnosci
+        devicesDatabase.runAllDevices(this);
+        
+        //dopisac kontrole poprawnosci
 
         return true;
     }
@@ -128,7 +133,11 @@ public class AlarmSystem implements EventInterface {
     //-------------------------------------------------------------------- 
     protected boolean updateScreen(String portGPIO, String name, String place, String value){
         //Aktualizuj ekran niezaleznie od systemu
-        desktop.addRow(portGPIO, name, place, value);
+        if(value.equals("HIGH")){
+            
+            System.out.println(portGPIO + " : " + name + " : " + place + " : " + value);
+            desktop.addRow(portGPIO, name, place, value);
+        }
         //dodac kontrole poprawnosci dodania wiersza do aktualnego ekranu
         //przemyslec dzialanie i sensownosc tej funkcji
         
