@@ -12,7 +12,7 @@ package serwer_lcd_sensors;
 
 //Najwyzsza klasa, baza calego systemu ktora bedzie zarzadzala wszystkimi modulami
 //uruchamiana i Tworzona bezposrednio w main klasy "Serwer_LCD_SENSORS", dla zachowania czytelnosci kodu
-public class AlarmSystem {
+public class AlarmSystem implements EventInterface {
     //Zmienne opisujace system i zawierajace jego moduly
     private final String localization;
     private final String ownerName;
@@ -123,9 +123,10 @@ public class AlarmSystem {
         return true;
     }
     //-------------------------------------------------------------------- 
-    protected boolean updateScreen(){
+    protected boolean updateScreen(String portGPIO, String name, String place, String value){
         //Aktualizuj ekran niezaleznie od systemu
-        
+        desktop.addRow(portGPIO, name, place, value);
+        //dodac kontrole poprawnosci dodania wiersza do aktualnego ekranu
         //przemyslec dzialanie i sensownosc tej funkcji
         
         //dopisac kontrole poprawnosci
@@ -133,6 +134,14 @@ public class AlarmSystem {
         return true;
     }
     //-------------------------------------------------------------------- 
+
+    @Override
+    public void eventOccured(String portGPIO, String name, String place, String value) {
+        //Metoda aktualizuje ekran zgodnie z otrzymanymi danymi ( dodaje wiersz do ekranu ) 
+        updateScreen(portGPIO, name, place, value);
+        //Dodac kontrole poprawnosci aktualizacji ekranu
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
 }
